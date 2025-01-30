@@ -55,8 +55,6 @@ export const PokeCardWrapper = ({}: PokeCardWrapperProps) => {
   }, []);
 
   useEffect(() => {
-    console.log("haha");
-
     fetchPokemon();
   }, [selectedType]);
 
