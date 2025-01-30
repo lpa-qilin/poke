@@ -1,33 +1,54 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
+import type { Meta, StoryObj } from "@storybook/react";
+import { Header } from "../components/Header";
 
-import { Header } from './Header';
 
 const meta = {
-  title: 'Example/Header',
+  title: "Components/Header",
   component: Header,
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
-  tags: ['autodocs'],
   parameters: {
-    // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout
-    layout: 'fullscreen',
+    layout: "centered",
   },
-  args: {
-    onLogin: fn(),
-    onLogout: fn(),
-    onCreateAccount: fn(),
+  tags: ["autodocs"],
+  argTypes: {
+    text: { control: "text" },
+    size: {
+      control: "radio",
+      options: ["small", "medium", "large"],
+    },
+    color: { control: "color" },
+    weight: {
+      control: "radio",
+      options: ["normal", "bold"],
+    },
   },
 } satisfies Meta<typeof Header>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const LoggedIn: Story = {
+export const Default: Story = {
   args: {
-    user: {
-      name: 'Jane Doe',
-    },
+    text: "Hello Storybook!",
+    size: "medium",
+    color: "#000",
+    weight: "normal",
   },
 };
 
-export const LoggedOut: Story = {};
+export const Large: Story = {
+  args: {
+    text: "Big Header",
+    size: "large",
+    color: "#ff0000",
+    weight: "bold",
+  },
+};
+
+export const Small: Story = {
+  args: {
+    text: "Small Header",
+    size: "small",
+    color: "#0000ff",
+    weight: "normal",
+  },
+};

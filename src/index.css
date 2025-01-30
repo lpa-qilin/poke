@@ -28,6 +28,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background: white;
 }
 
 h1 {
@@ -65,4 +66,90 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.pokemonContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  gap:10px;
+}
+
+.pokemon {
+  color:#333333;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1 1 130px;
+  max-width: 180px;
+  width: auto;
+  height: auto;
+  border: 1px solid #E5E5E5;
+  border-radius: 15px;
+  padding: 10px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+.pokemonHeader {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  font-weight: bold;
+}
+.pokemonTypes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+  margin-top: auto; /* Schiebt die Typen immer nach unten */
+  width: 100%;
+}
+.pokeType {
+  color:#333333;
+  border-radius: 10px;
+  padding: 0 10px;
+  margin: 5px 0 10px 0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+.filterHeader {
+  
+  display: inline-flex;
+  justify-content: start;
+  gap: 5px;
+  font-weight: bold;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.filterContainer {
+ width: 100%;
+ margin-bottom: 10px;
+ color:#333333;
+}
+
+.filterIcon {
+  width: 24px;
+  height: 24px;
+  color: #add8e6;
+}
+
+.filterSelect {
+  border: none;
+  font-size: 16px;
+  padding: 5px;
+  background: transparent;
+  cursor: pointer;
+}
+.svgIcon {
+  transition: transform 0.3s ease-in-out; /* 🔥 Weiche Animation */
+}
+
+.svgIcon.open {
+  transform: rotate(180deg); /* 🔄 180° Drehung */
 }

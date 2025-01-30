@@ -1,32 +1,45 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { expect, userEvent, within } from '@storybook/test';
-
-import { Page } from './Page';
+import type { Meta, StoryObj } from "@storybook/react";
+import { Page } from "../components/Page";
 
 const meta = {
-  title: 'Example/Page',
+  title: "Pages/Page",
   component: Page,
   parameters: {
-    // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout
-    layout: 'fullscreen',
+    layout: "fullscreen",
+  },
+  argTypes: {
+    headlineText: { control: "text", name: "Headline Text" },
+    headlineSize: {
+      control: "radio",
+      options: ["small", "medium", "large"],
+      name: "Headline Size",
+    },
+    headlineColor: {
+      control: "color",
+      name: "Headline Color",
+    },
+    headlineWeight: {
+      control: "radio",
+      options: ["normal", "bold"],
+      name: "Headline Weight",
+    },
   },
 } satisfies Meta<typeof Page>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const LoggedOut: Story = {};
+export const Default: Story = {
+  args: {
+    headlineText: "",
+  },
+};
 
-// More on component testing: https://storybook.js.org/docs/writing-tests/component-testing
-export const LoggedIn: Story = {
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const loginButton = canvas.getByRole('button', { name: /Log in/i });
-    await expect(loginButton).toBeInTheDocument();
-    await userEvent.click(loginButton);
-    await expect(loginButton).not.toBeInTheDocument();
-
-    const logoutButton = canvas.getByRole('button', { name: /Log out/i });
-    await expect(logoutButton).toBeInTheDocument();
+export const WithCustomHeadline: Story = {
+  args: {
+    headlineText: "adad",
+    headlineSize: "large",
+    headlineColor: "#ff0000",
+    headlineWeight: "bold",
   },
 };
