@@ -37,7 +37,7 @@ export const Default: Story = {
 
 export const WithCustomHeadline: Story = {
   args: {
-    headlineText: "adad",
+    headlineText: "Headline",
     headlineSize: "large",
     headlineColor: "#ff0000",
     headlineWeight: "bold",

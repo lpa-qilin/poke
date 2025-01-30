@@ -9,16 +9,16 @@ export const Loading = ({ text, dimensions }: LoadingProps) => {
   const [hue, setHue] = useState(0);
 
   useEffect(() => {
-    let timer: number; // Speichert die Timer-ID
+    let timer: number;
 
     const updateColor = () => {
-      setHue((prev) => (prev + 5) % 360); // Kleinere Schritte für sanftere Übergänge
-      timer = window.setTimeout(updateColor, 100); // Langsame Farbänderung
+      setHue((prev) => (prev + 5) % 360);
+      timer = window.setTimeout(updateColor, 100);
     };
 
     updateColor();
 
-    return () => clearTimeout(timer); // Cleanup beim Unmount
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -29,7 +29,6 @@ export const Loading = ({ text, dimensions }: LoadingProps) => {
         height={dimensions?.height || 80}
         viewBox="0 0 100 100"
       >
-        {/* Pokéball */}
         <circle
           cx="50"
           cy="50"
@@ -40,10 +39,10 @@ export const Loading = ({ text, dimensions }: LoadingProps) => {
         />
         <path
           d="M 2,50 A 48,48 0 0,1 98,50"
-          fill={`hsl(${hue}, 100%, 50%)`} // Dynamischer Farbverlauf
+          fill={`hsl(${hue}, 100%, 50%)`}
           stroke="black"
           strokeWidth="4"
-          style={{ transition: "fill 1s linear" }} // Weicher Übergang
+          style={{ transition: "fill 1s linear" }}
         />
         <circle
           cx="50"
@@ -59,7 +58,6 @@ export const Loading = ({ text, dimensions }: LoadingProps) => {
   );
 };
 
-// 🌈 Stile
 const containerStyle: React.CSSProperties = {
   display: "flex",
   flexDirection: "column",
@@ -71,7 +69,7 @@ const containerStyle: React.CSSProperties = {
 const textStyle: React.CSSProperties = {
   fontSize: "20px",
   fontWeight: "bold",
-  color: "#ffcc00", // Pikachu-Gelb
+  color: "#ffcc00",
   marginBottom: "10px",
 };
 

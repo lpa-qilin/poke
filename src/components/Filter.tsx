@@ -13,14 +13,18 @@ export const Filter = ({ types, onFilterChange }: FilterProps) => {
   const [filterOpen, setFilterOpen] = useState<boolean>(false);
 
   const onClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    const type = event.currentTarget.textContent;
-    setSelectedType((prev) => (prev === type ? "all" : type || ""));
+    const type = event.currentTarget.textContent || prevSelectedType.current;
+    setSelectedType((prev) => (prev === type ? type : type || "all"));
+  };
+
+  const clearFilter = () => {
+    setSelectedType((prev) => (prev === "all" ? "" : "all"));
   };
 
   useEffect(() => {
     if (prevSelectedType.current !== selectedType) {
-      prevSelectedType.current = selectedType;
-      onFilterChange(selectedType);
+      prevSelectedType.current = selectedType || "all";
+      onFilterChange(prevSelectedType.current);
     }
   }, [selectedType, onFilterChange]);
 
@@ -55,7 +59,7 @@ export const Filter = ({ types, onFilterChange }: FilterProps) => {
 
       {filterOpen && (
         <div className="pokemonTypes">
-          <PokeType key={"all"} type={"all"} onClick={onClick} />
+          <PokeType key={"all"} type={"all"} onClick={clearFilter} />
           {types.map((type, index) => (
             <PokeType key={index} type={type.name} onClick={onClick} />
           ))}

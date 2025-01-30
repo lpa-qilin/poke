@@ -20,6 +20,7 @@ export const PokeCardWrapper = ({}: PokeCardWrapperProps) => {
         selectedType === "all"
           ? `${import.meta.env.VITE_API_URL}/pokemon`
           : `https://pokeapi.co/api/v2/type/${selectedType}`;
+
       const response = await fetch(api);
       if (!response.ok)
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -54,6 +55,8 @@ export const PokeCardWrapper = ({}: PokeCardWrapperProps) => {
   }, []);
 
   useEffect(() => {
+    console.log("haha");
+
     fetchPokemon();
   }, [selectedType]);
 
